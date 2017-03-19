@@ -24,9 +24,11 @@ Product.propTypes = {
   producer: React.PropTypes.string,
   hasWatermark: React.PropTypes.bool,
   color: React.PropTypes.oneOf(['white', 'eggshell-white', 'salmon']).isRequired,
-  weight: function(object, propName) {
-    const weight = object[propName];
-    console.log(object)
+  weight: function(props, propName, componentName) {
+    const weight = props[propName];
+    console.log(props)  // the actual object 
+    console.log(propName) // the key (the props name)
+    console.log(componentName)  //the name of the component - this didn't need to be passed in this case 
 
     if (weight === undefined) {
       return new Error('The `weight` prop is required.');
