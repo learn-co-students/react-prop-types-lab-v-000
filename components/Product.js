@@ -26,6 +26,7 @@ Product.propTypes = {
   color: React.PropTypes.oneOf(['white', 'eggshell-white', 'salmon']).isRequired,
   weight: function(object, propName) {
     const weight = object[propName];
+    console.log(object)
 
     if (weight === undefined) {
       return new Error('The `weight` prop is required.');
