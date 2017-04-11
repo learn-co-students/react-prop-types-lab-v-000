@@ -1,4 +1,5 @@
 import React from 'react'; 
+import PropTypes from 'prop-types';
 
 export default class Product extends React.Component {
   render() {
@@ -19,10 +20,10 @@ Product.defaultProps = {
 }
 
 Product.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  producer: React.PropTypes.string, 
-  hasWatermark: React.PropTypes.bool, 
-  color: React.PropTypes.oneOf(["salmon","white","eggshell-white"]).isRequired, 
+  name: PropTypes.string.isRequired,
+  producer: PropTypes.string, 
+  hasWatermark: PropTypes.bool, 
+  color: PropTypes.oneOf(["salmon","white","eggshell-white"]).isRequired, 
   weight: validWeight
 }
 
