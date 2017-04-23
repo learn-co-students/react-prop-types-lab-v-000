@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class Product extends React.Component {
+class Product extends React.Component {
 	render() {
 		return(
 			<p>Name: {this.props.name}</p>
@@ -36,3 +36,5 @@ Product.propTypes = {
 Product.defaultProps = {
   hasWatermark: false,
 };
+
+module.exports = Product
