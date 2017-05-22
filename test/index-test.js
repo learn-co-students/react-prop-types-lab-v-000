@@ -123,11 +123,11 @@ describe('<Product />', () => {
 
     it('should range between 80 and 300', function () {
       shallow(<Product {...ALL_PROPS_VALID} />);
-      expect(spy.called).toBeFalsy('The `weight` prop validator does not check for the weight ranging between 80 and 300.');
+      expect(spy.called).toBeFalsy('First test: The `weight` prop validator does not check for the weight ranging between 80 and 300.');
       shallow(<Product {...ALL_PROPS_VALID} weight={10} />);
-      expect(spy.called).toBeTruthy('The `weight` prop validator does not check for the weight ranging between 80 and 300.');
+      expect(spy.called).toBeTruthy('Second test: The `weight` prop validator does not check for the weight ranging between 80 and 300.');
       shallow(<Product {...ALL_PROPS_VALID} weight={500} />);
-      expect(spy.called).toBeTruthy('The `weight` prop validator does not check for the weight ranging between 80 and 300.');
+      expect(spy.called).toBeTruthy('Third test: The `weight` prop validator does not check for the weight ranging between 80 and 300.');
     });
   });
 });
