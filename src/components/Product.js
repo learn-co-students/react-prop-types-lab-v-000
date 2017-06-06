@@ -22,9 +22,9 @@ let weightCheck = createChainableTypeChecker(weightChecker);
 debugger
 function createChainableTypeChecker(validate) {
     function checkType(isRequired, props, propName, componentName, location) {
-        
+
         if (props[propName] == null) {
-            
+
             if(isRequired){
                 return new Error(
                     ("Required `" + propName + "` was not specified in ") +
@@ -64,7 +64,23 @@ Product.propTypes = {
     producer: PropTypes.string,
     hasWatermark: PropTypes.bool,
     color: PropTypes.oneOf(['white', 'eggshewll-white', 'salmon']).isRequired,
-    weight: weightCheck.isRequired
+    weight: (props, propName) => {
+        const weight = props[propName];
+
+        if (weight === undefined) {
+            return new Error('The `weight` prop is required.');
+        }
+
+        if (isNaN(weight)) {
+            return new Error('The `weight` is not a number.');
+        }
+
+        const isValidWeight = weight > 80 && weight < 300;
+
+        if (!isValidWeight) {
+            return new Error('The `weight` prop should range between 80 and 300.');
+        }
+    }
 };
 
 Product.defaultProps = {
