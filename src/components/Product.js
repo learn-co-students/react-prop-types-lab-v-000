@@ -46,8 +46,12 @@ function createChainableTypeChecker(validate) {
 
 
 
-function weightChecker(props, weight, componentName) {
-    if (props[weight] < 80 || props[weight] > 300 ) {
+function weightChecker(props, propName, componentName) {
+    const weight = props[propName]
+    if (isNan(weight)) {
+        return new Error ("Weight must be a number")
+    }
+    if (weight < 80 || weight > 300 ) {
         return new Error(
             'Invalid prop `' + weight + '` supplied to' +
             ' `' + componentName + '`. Must be a number between 80 and 300.'
