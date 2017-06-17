@@ -20,26 +20,26 @@ Product.defaultProps = {
   hasWatermark: false
 }
 
-
-Product.PropTypes = {
+Product.propTypes = {
   name: PropTypes.string.isRequired,
   producer: PropTypes.string,
   hasWatermark: PropTypes.bool,
   color: PropTypes.oneOf(['white', 'eggshell-white', 'salmon']).isRequired,
-  weight: function(props, PropName, componentName) {
-    if (props[propName]) {
-      let value = props[propName];
+  weight: function(props, propName, componentName) {
+    let value = props[propName];
+    if (value === undefined) {
+      return new Error(propName + ' in ' + componentName + " is required.");
+    }
 
-      if (sNaN(value)) {
-          return new Error(propName + ' in ' + componentName + " is not an integer");
-      }
+    if (isNaN(value)) {
+        return new Error(propName + ' in ' + componentName + " is not an integer");
+    }
 
-      else if (value >= 80 && value <= 300) {
-          return new Error(propName + ' in ' + componentName + " is not between 80 and 300");
-      }
+     if (value <= 80 || value >= 300) {
+        return new Error(propName + ' in ' + componentName + " is not between 80 and 300");
     }
     return null;
-  }.isRequired
+  }
 };
 
 export default Product;
