@@ -32,6 +32,7 @@ Product.propTypes = {
 }
 
 function validWt (wt) {
+	debugger;
   return ((typeof wt === 'number') && (wt > 79 )&& (wt < 301));
 }
 
