@@ -25,15 +25,24 @@ Product.propTypes = {
 	hasWatermark: PropTypes.bool,
 	color: PropTypes.PropTypes.oneOf(['white', 'eggshell-white', 'salmon']).isRequired,
 	weight: function(props, propName) {
-		if (!validWt(props[propName])) {
-			return new Error('Invalid weight! Must be a number between 80 and 300');
+		if (!props[propName]) {
+			return new Error(`The prop ${propName} is marked as required`);
+		}
+		if (!validWtType(props[propName])) {
+			return new Error(`${propName} should be a number.`);
+		}
+		if (!validWtRange(props[propName])) {
+			return new Error(`${propName} is out of range.`);
 		}
 	}
 }
 
-function validWt (wt) {
-	debugger;
-  return ((typeof wt === 'number') && (wt > 79 )&& (wt < 301));
+function validWtType(wt) {
+  return (typeof wt === 'number');
+}
+
+function validWtRange(wt) {
+	return ((wt >= 80) && (wt <= 300));
 }
 
 export default Product;
