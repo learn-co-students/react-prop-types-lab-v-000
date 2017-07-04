@@ -21,13 +21,14 @@ Product.propTypes = {
 
   weight: PropTypes.number.isRequired, function(props, propName, componentName) {
 
-   if (props.propName > 300 || props.propName < 80) {
+   if (props.weight > 300 || props.weight < 80) {
      return new Error(
        'Invalid prop `' + propName + '` supplied to' +
        ' `' + componentName + '`. Validation failed.'
      );
    }
  }
+
 
 
 }
