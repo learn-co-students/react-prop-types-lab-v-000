@@ -9,7 +9,7 @@ export default class Product extends React.Component {
           <p>{this.props.name} </p>
           <p>{this.props.producer}</p>
           <p>{this.props.hasWatermark}</p>
-          {/*<p>{this.props.color.join(', ')}</p>*/}
+          <p>{this.props.color}</p>
           <p>{this.props.weight}</p>
 
       </div>
@@ -22,18 +22,28 @@ Product.defaultProps = {
 };
 
 Product.propTypes = {
+    name: PropTypes.string.isRequired,
     producer: PropTypes.string,
     
     hasWatermark: PropTypes.bool,
-    // color: PropTypes.arrayOf(PropTypes.string).isRequired,
-    name: PropTypes.string.isRequired,
+    color: React.PropTypes.oneOf(['white', 'eggshell-white', 'salmon']).isRequired,
+
     weight: isWeight
 
 };
 
-function isWeight(props, weight, components){
-    if (80 > weight < 300 ){
-        return 'must be between 80 & 300';
+function isWeight(props, propName){
+    var weight = props[propName];
+    if (weight === undefined) {
+      return new Error('The `weight` prop undefined.');
+    }
+
+    if (isNaN(weight)) {    
+      return new Error('The `weight` prop is NaN.');
+    }
+
+    if (80 > weight || weight > 300){
+        return new Error('must be between 80 & 300');
     }
 }
 
