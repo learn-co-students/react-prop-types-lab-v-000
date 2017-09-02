@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 import Product from './components/Product';
 
 ReactDOM.render(
-  <Product 
+  <Product
     name="Dunder Mifflin" 
-    producer="PaperCo" 
-    color="white" 
-    weight={210} 
+    producer="PaperCo"
+    color="white"
+    weight={210}
   />,
   document.getElementById('root')
 );
