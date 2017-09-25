@@ -19,11 +19,10 @@ Product.defaultProps = {
   hasWatermark: false
 }
 
-// var weightRange = new Range(0, 301)];
 
 var weightRange = [];
 for (var i = 80; i < 301; i++) {
-  weight_range.push(i);
+  weightRange.push(i);
 }
 
 Product.propTypes = {
