@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 function goodWeight(props, propName, componentName) {
   if (!(props[propName])) {
     return new Error("Weight is a required property");
+  } else {
+  var value = props[propName];
   }
-  let value = props[propName];
-  if (NaN(value)) {
+  if (typeof(value)!== 'number') {
     return new Error(propName + ' must be a number');
-  }
-  if (value > 300 || value < 80 ) {
+  } else if (value > 300 || value < 80 ) {
     return new Error(propName + ' must be a number between 80 and 300');
   }
 }
