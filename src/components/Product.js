@@ -37,8 +37,6 @@ Product.propTypes = {
     if (isNaN(weight)){
       return new Error(error)
     } 
-
-    return true
   }
 }
 
