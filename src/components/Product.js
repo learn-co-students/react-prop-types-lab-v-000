@@ -21,12 +21,11 @@ Product.propTypes = {
   hasWatermark: PropTypes.bool,
   color: PropTypes.oneOf(['white', 'eggshell-white', 'salmon']).isRequired,
   weight: function(props, propName) {
-    debugger
-      if (props[propName]<80 && props[propName]>300) {
+      if (props[propName]<80 || props[propName]>300) {
         return new Error('The `weight` prop should range between 80 and 300.');
       } else if (props[propName] === undefined) {
         return new Error('The `weight` prop is required.');
-      } else if (!isNaN(props[propName])) {
+      } else if (isNaN(props[propName])) {
         return new Error('The `weight` prop should be a number.');
       }
     }
