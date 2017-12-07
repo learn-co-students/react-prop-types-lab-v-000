@@ -12,6 +12,7 @@ const ALL_PROPS_VALID = {
   producer: 'foo',
   hasWatermark: true,
   color: 'white',
+  
   weight: 90,
 };
 
