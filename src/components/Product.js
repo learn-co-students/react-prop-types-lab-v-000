@@ -10,7 +10,7 @@ class Product extends React.Component {
         <h3>{this.props.producer} </h3>
         <h3>{this.props.hasWatermark} </h3>
         <h3>{this.props.color.join(', ')} </h3>
-        <h3>{this.props.weight} </h3>
+        <h3>{this.props.weight} </h3> //need to fix for custom validation - between 80 - 300
       </div>
     )
   }
@@ -24,6 +24,6 @@ Product.propTypes = {
   name: PropTypes.string.isRequired,
   producer: PropTypes.string,
   hasWatermark: PropTypes.bool,
-  color: PropTypes.arrayOf(['white', 'eggshell-white', 'salmon']).isRequired,
+  color: PropTypes.arrayOf(['white', 'eggshell-white', 'salmon']).isRequired, // need to fix for array
   weight: PropTypes.number
 };
