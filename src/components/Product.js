@@ -24,14 +24,26 @@ Product.propTypes = {
     'white',
     'eggshell-white',
     'salmon'
-  ]).isRequired,
-  customProp: function(props, weight, Product) {
-    if (props[weight] > 300 || props[weight] < 80) {
-      return new Error(
-        'Invalid prop `' + weight + '`. Validation failed.'
-      );
+    ]).isRequired,
+  weight: (props, propName) => {
+    const weight = props[propName];
+
+    if(weight === undefined){
+      return new Error('Props `weight` is required.')
+    }
+
+    if(isNaN(weight)) { //REMEMBER NaN NOT Nan!!
+        return new Error('Props `weight` must be a number.')
+    }
+
+    const valid = weight < 300 && weight > 80;
+
+    if(!valid){
+        return new Error('Props `weight` must be between 80 and 300.')
     }
   },
 };
+
+
 
 export default Product;
