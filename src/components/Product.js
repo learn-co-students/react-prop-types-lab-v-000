@@ -16,12 +16,21 @@ class Product extends React.Component{
   }
 }
 
+Product.defaultProps = {
+  hasWatermark: false
+
+}
+
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   producer: PropTypes.string,
-  hasWatermark:PropTypes.boolean,
-  colors: PropTypes.string.isRequired,
-  weight: PropTypes.number.isRequired
+  hasWatermark:PropTypes.bool,
+  colors: PropTypes.oneOf(['white', 'eggshell-white', 'salmon']),
+  weight: function(prop){
+    if( !(Number.isInteger(prop) && prop >= 80 && prop <= 300) ){
+      return new Error("Invalid value")
+    }
+  }
 }
 
 export default Product
