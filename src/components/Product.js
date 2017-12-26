@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const acceptedColors = ['white', 'eggshell-white', 'salmon']
+
 class Product extends React.Component{
   render(){
     return(
@@ -21,16 +23,44 @@ Product.defaultProps = {
 
 }
 
+function hasValue(props, propName, componentName, location){
+  const acceptedColors = ['white', 'eggshell-white', 'salmon']
+  if (props[propName]){
+    let value = props[propName]
+    if (typeof value !== 'string'){
+      return new Error("Improper value, must be a string.")
+    }
+    return acceptedColors.includes(value) ? null : new Error("Not an accceptable color.")
+  }
+  else{
+    return new Error("Value has not been assigned.")
+  }
+}
+
+function customRange(props, propName, componentName, location){
+  if (props[propName]){
+    let value = props[propName]
+    if (isNaN(value) ){
+      return new Error("Value is not a number")
+    }
+    else if (value < 80 || value > 300) {
+      return new Error("Value is not in accepted range")
+    }
+    else {
+      return null
+    }
+  }
+  else {
+    return new Error("Value has not been assigned.")
+  }
+}
+
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   producer: PropTypes.string,
-  hasWatermark:PropTypes.bool,
-  colors: PropTypes.oneOf(['white', 'eggshell-white', 'salmon']),
-  weight: function(prop){
-    if( !(Number.isInteger(prop) && prop >= 80 && prop <= 300) ){
-      return new Error("Invalid value")
-    }
-  }
+  hasWatermark: PropTypes.bool,
+  weight: customRange,
+  color: hasValue
 }
 
 export default Product
