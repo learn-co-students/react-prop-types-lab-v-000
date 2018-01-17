@@ -24,7 +24,7 @@ Product.propTypes = {
   producer: PropTypes.string,
   hasWatermark: PropTypes.bool,
   color: PropTypes.oneOf(['white', 'eggshell-white', 'salmon']).isRequired,
-  weight: function(props){
+  weight: (props) => {
     const weight = props.weight
     if (weight === undefined) {
       return new Error('The `weight` prop is required.');
