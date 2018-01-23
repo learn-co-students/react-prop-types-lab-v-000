@@ -28,8 +28,8 @@ Product.propTypes = {
   producer: PropTypes.string,
   hasWatermark: PropTypes.bool,
   color: PropTypes.oneOf(['white', 'eggshell-white', 'salmon']).isRequired,
-  weight: function(props, propName, componentName) {
-    let weight = props[propName];
+  weight: (props, propName) => {
+    const weight = props[propName];
 
     if (weight === undefined) {
       return new Error("Sorry you must include a number for weight.");
