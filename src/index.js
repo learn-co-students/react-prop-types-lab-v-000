@@ -7,8 +7,8 @@ ReactDOM.render(
   <Product
     name="Dunder Mifflin"
     producer="PaperCo"
-    color="white"
-    weight={210}
+    color="salmon"
+    weight={500}
   />,
   document.getElementById('global')
 );
