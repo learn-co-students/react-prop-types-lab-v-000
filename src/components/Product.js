@@ -22,52 +22,22 @@ Product.defaultProps = {
   hasWatermark: false,
 };
 
-let weightNumber = createChainableTypeChecker(weightChecker);
-
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   producer: PropTypes.string,
   hasWatermark: PropTypes.bool,
   color: PropTypes.oneOf(['white', 'eggshell-white', 'salmon']).isRequired,
-  weight: weightChecker.isRequired
-}
-
-function weightChecker(props, propName, componentName, location) {
-  componentName = componentName || 'ANONYMOUS';
-  if (props[propName]) {
+  weight: function (props, propName) {
+    if (props[propName] === undefined) {
+      return new Error("There's no weight!");
+    }
     let value = props[propName];
-    if (typeof value === 'number') {
-      if (value > 80 && value < 300) {
-        return null;
-      } else {
-        new Error(propName + ' in ' + componentName + 'is not in the proper range');
-      }
+    if (typeof value !== 'number') {
+      return new Error('The weight is not a number!');
+    } else if (value < 80 || value > 300) {
+      return new Error('The weight is out of range!');
     }
   }
-  return null;
-}
-
-function createChainableTypeChecker(validate) {
-  function checkType(isRequired, props, propName, componentName, location) {
-    componentName = componentName || ANONYMOUS;
-    if (props[propName] == null) {
-      var locationName = ReactPropTypeLocationNames[location];
-      if (isRequired) {
-        return new Error(
-          ("Required " + locationName + " `" + propName + "` was not specified in ") +
-          ("`" + componentName + "`.")
-        );
-      }
-      return null;
-    } else {
-      return validate(props, propName, componentName, location);
-    }
-  }
-
-  let chainedCheckType = checkType.bind(null, false);
-  chainedCheckType.isRequired = checkType.bind(null, true);
-
-  return chainedCheckType;
 }
 
 export default Product;
