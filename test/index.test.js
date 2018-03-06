@@ -51,8 +51,9 @@ describe('<Product />', () => {
 
   describe('`name` prop', () => {
     it('should be required', () => {
+
       shallow(<Product {...ALL_PROPS_VALID} name={undefined} />);
-      expect(isRequiredPropTypeError(spy, 'name'), ERRORS.PROP_IS_REQUIRED).to.be.true;
+      expect(spy.called, 'The `name` prop validator does not validate the value as being required.').to.be.true;
     });
 
     it('should have the right propType', () => {
