@@ -30,9 +30,14 @@ Product.defaultProps = {
 }
 
 function weightPropType(prop, propType) {
-  const weight = prop[propType]
-
-  if (!weight || weight < 80 || weight > 300){
+  const weightProp = prop[propType];
+  if (!weightProp) {
+    return new Error('weight required');
+  }
+  else if (isNaN(weightProp)) {
+    return new Error('weight must be a number')
+  }
+  else if (weightProp < 80 || weightProp > 300) {
 	  return new Error('invalid weight')
 	}
 }
