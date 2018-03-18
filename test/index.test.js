@@ -15,6 +15,7 @@ const ALL_PROPS_VALID = {
   weight: 90,
 };
 
+debugger
 let spy;
 
 const ERRORS = {
