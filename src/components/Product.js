@@ -30,7 +30,7 @@ Product.propTypes = {
     const weight = props[propName]
     if (props[propName] === undefined) {
         return new Error("Weight can't be blank");
-      } if (typeof weight !== 'number') {
+      } if (isNaN(weight)) {
         return new Error('The weight must be a number');
       } else if (weight < 80 || weight > 300) {
         return new Error('Weight must be between 80 and 300');
