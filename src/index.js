@@ -8,7 +8,6 @@ ReactDOM.render(
     name="Dunder Mifflin"
     producer="PaperCo"
     color="white"
-    weight={210}
   />,
   document.getElementById('global')
 );
