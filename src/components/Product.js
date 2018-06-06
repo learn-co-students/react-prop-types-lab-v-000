@@ -39,7 +39,7 @@ Product.propTypes = {
     if (!isValidWeight) {
       return new Error ('`weight` is not a valid weight.');
     }
-  }
+  },
 }
 
 
