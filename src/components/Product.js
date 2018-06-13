@@ -34,17 +34,18 @@ Product.propTypes={
 
 function betweenWeights(props, propName){
   if (props[propName] == null) {
-    return  new Error("Warning: Required prop was not specified.")};
-   let value = props[propName];
-   if( typeof value === "number"){
-     if (value <80 || value > 300) {
-       return new Error(
-        'Validation failed.'
-      );
+    return new Error('The `weight` prop is required.');
+  };
+
+  let value = props[propName];
+
+  if( typeof value === "number"){
+    if (value <80 || value > 300) {
+      return new Error('The `weight` prop should range between 80 and 300.');
    }
  }
-  else{
-    return new Error('Validation failed.')
+  if( typeof value !== "number"){
+    return new Error('The `weight` prop is not a number');
   }
 
 }
