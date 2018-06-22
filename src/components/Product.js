@@ -28,7 +28,7 @@ Product.propTypes = {
   weight: function (props, propName, componentName) {
     componentName = componentName || 'ANONYMOUS';
 
-    if (props[propName]) {
+
       let weight = props[propName];
       if (weight === undefined){
           return new Error ('The `weight` prop is required.')
@@ -40,7 +40,7 @@ Product.propTypes = {
           return new Error ("Weight must be within range")
       }
     }
-}
+
 }
 
 
