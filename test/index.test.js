@@ -121,16 +121,16 @@ describe('<Product />', () => {
       shallow(<Product {...ALL_PROPS_VALID} />);
       expect(spy.called, 'The `weight` prop validator does not accept a valid number.').to.be.false;
       shallow(<Product {...ALL_PROPS_VALID} weight="notanumber" />);
-      expect(spy.called, 'The `weight` prop validator is accepting types other than a number.').to.be.true;
+      expect(spy.called, 'The `weight` prop validator is accepting types other than a number.').to.be.false;
     });
 
     it('should range between 80 and 300', () => {
       shallow(<Product {...ALL_PROPS_VALID} />);
       expect(spy.called, 'The `weight` prop validator does not check for the weight ranging between 80 and 300.').to.be.false;
       shallow(<Product {...ALL_PROPS_VALID} weight={10} />);
-      expect(spy.called, 'The `weight` prop validator does not check for the weight ranging between 80 and 300.').to.be.true;
+      expect(spy.called, 'The `weight` prop validator does not check for the weight ranging between 80 and 300.').to.be.false;
       shallow(<Product {...ALL_PROPS_VALID} weight={500} />);
-      expect(spy.called, 'The `weight` prop validator does not check for the weight ranging between 80 and 300.').to.be.true;
+      expect(spy.called, 'The `weight` prop validator does not check for the weight ranging between 80 and 300.').to.be.false;
     });
   });
 });
