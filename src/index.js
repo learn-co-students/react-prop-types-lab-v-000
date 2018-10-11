@@ -10,5 +10,5 @@ ReactDOM.render(
     color="white" 
     weight={210} 
   />,
-  document.getElementById('root')
+  document.getElementById('global')
 );

@@ -5,7 +5,13 @@ class Product extends React.Component {
 
   render() {
     return (
-      <div>Product</div>
+      <div>
+        <h1>Product: {this.props.name}</h1>
+        <p>Producer: {this.props.producer}</p>
+            <p>Color: {this.props.color}</p>
+        <p>Weight: {this.props.weight}</p>
+      </div>
+      
     )
   }
 }
