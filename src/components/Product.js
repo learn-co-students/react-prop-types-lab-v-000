@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// First attempt 4/29/18
 class Product extends React.Component {
   render() {
     return (
@@ -40,3 +41,47 @@ function checkWeight (props, propName, componentName) {
 }
 
 export default Product;
+
+// Second attempt 11/4/18 - something in here is wrong, but think it's test related bc the code is not different from the solution
+// class Product extends React.Component {
+//   render() {
+//     return (
+//       <div id="product">
+//       </div>
+//     )
+//   }
+// };
+//
+// Product.defaultProps = {
+//   hasWatermark: false
+// };
+//
+// Product.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   producer: PropTypes.string,
+//   hasWatermark: PropTypes.bool,
+//   color: PropTypes.oneOf([
+//     'white',
+//     'eggshell-white',
+//     'salmon'
+//   ]).isRequired,
+//   weight: checkWeight
+// };
+//
+// function checkWeight(prop, propName){
+//   const weight = prop[propName];
+//
+//   if (weight === undefined) {
+//     return new Error("The `weight` prop is required.");
+//   }
+//
+//   if (isNaN(weight)) {
+//     return new Error("The `weight` prop is not a number.")
+//   }
+//
+//   if (weight < 80 || value > 300) {
+//     return new Error("The `weight` prop should range between 80 and 300.")
+//   }
+// };
+//
+// export default Product;
