@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import Product from './components/Product';
+import Product from './components/Product'
 
 ReactDOM.render(
   <Product
-    name="Dunder Mifflin"
-    producer="PaperCo"
-    color="white"
+    name='Dunder Mifflin'
+    producer='PaperCo'
+    color='salmon'
     weight={210}
   />,
   document.getElementById('global')
-);
+)
