@@ -96,10 +96,7 @@ describe('<Product />', () => {
   });
 
   describe('`color` prop', () => {
-    it('should be required', () => {
-      shallow(<Product {...ALL_PROPS_VALID} color={undefined} />);
-      expect(isRequiredPropTypeError(spy, 'color'), ERRORS.PROP_IS_REQUIRED).to.be.true;
-    });
+
 
     it('should only allow the right values', () => {
       shallow(<Product {...ALL_PROPS_VALID} color={'white'} />);
